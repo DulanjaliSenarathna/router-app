@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./components/navbar";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Products from "./components/products";
 import Posts from "./components/posts";
 import Home from "./components/home";
@@ -15,14 +15,16 @@ class App extends Component {
       <div>
         <NavBar />
         <div className="content">
+          <Switch>
           <Route path={"/products"} component={Products}/>
           <Route path={"/posts"} component={Posts}/>
           <Route path={"/admin"} component={Dashboard}/>
           <Route path={"/"} component={Home}/>
+          </Switch>      
         </div>
       </div>
-    );
-  }
+    );//use exact in home component to avoid render home in other pages. Or, using Switch in react-router-dom
+  }//we should order out routes from the most specific one to generic one , when using switch. because switch considered 1st matching route and ignore others
 }
 
 export default App;
