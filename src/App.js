@@ -18,7 +18,7 @@ class App extends Component {
           <Switch>
             <Route path={"/products/:id"} component={ProductDetails} />
           <Route path={"/products"} render={(props)=> <Products sortBy="newest" {...props}/>}/>
-          <Route path={"/posts/:year/:month"} component={Posts}/>
+          <Route path={"/posts/:year?/:month?"} component={Posts}/>
           <Route path={"/admin"} component={Dashboard}/>
           <Route path={"/"} component={Home}/>
           </Switch>      
@@ -26,6 +26,6 @@ class App extends Component {
       </div>
     );//use exact in home component to avoid render home in other pages. Or, using Switch in react-router-dom
   }//we should order out routes from the most specific one to generic one , when using switch. because switch considered 1st matching route and ignore others
-}
+}//? = optional
 
 export default App;
